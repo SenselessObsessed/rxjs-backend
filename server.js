@@ -34,16 +34,8 @@ const fakeRes = {
 	],
 };
 
-let fakeResSended = false;
-
 router.get('/messages/unread', async ctx => {
-	if (!fakeResSended) {
-		ctx.response.body = fakeRes;
-		fakeResSended = true;
-	} else {
-		ctx.status = 400;
-		ctx.body = { status: 'nothing' };
-	}
+	ctx.response.body = fakeRes;
 });
 
 http.createServer(app.callback()).listen(port);
